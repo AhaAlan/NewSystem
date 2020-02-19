@@ -1,0 +1,80 @@
+Table: admin
+-----------+--------------+------+-----+---------+---------
+ Field     | Type         | Null | Key | Default | Remarks 
+-----------+--------------+------+-----+---------+---------
+ id        | INT(10)      | NO   | PRI |         |         
+ adminName | VARCHAR(255) | YES  |     |         |         
+ password  | VARCHAR(255) | YES  |     |         |         
+ nickName  | VARCHAR(255) | YES  |     |         |         
+ email     | VARCHAR(255) | YES  |     |         |         
+ tel       | VARCHAR(255) | YES  |     |         |         
+ super     | INT(10)      | YES  |     |         |         
+-----------+--------------+------+-----+---------+---------
+
+Table: category
+-------+-------------+------+-----+---------+---------
+ Field | Type        | Null | Key | Default | Remarks 
+-------+-------------+------+-----+---------+---------
+ id    | INT(10)     | NO   | PRI |         | 版块ID    
+ name  | VARCHAR(50) | YES  |     |         | 版块名称    
+-------+-------------+------+-----+---------+---------
+
+Table: collection
+----------------+----------+------+-----+---------+---------
+ Field          | Type     | Null | Key | Default | Remarks 
+----------------+----------+------+-----+---------+---------
+ id             | INT(10)  | NO   | PRI |         |         
+ topicId        | INT(10)  | YES  |     |         |         
+ userId         | INT(10)  | YES  |     |         |         
+ collectionTime | DATE(10) | YES  |     |         |         
+----------------+----------+------+-----+---------+---------
+
+Table: reply
+---------+--------------+------+-----+---------+---------
+ Field   | Type         | Null | Key | Default | Remarks 
+---------+--------------+------+-----+---------+---------
+ id      | INT(10)      | NO   | PRI |         |         
+ userId  | INT(10)      | NO   |     |         | 回帖发布用户ID
+ topicId | INT(10)      | NO   |     |         | 主题ID    
+ content | TEXT(65535)  | YES  |     |         | 回帖内容    
+ pubDate | DATETIME(19) | YES  |     |         | 回帖时间    
+ status  | INT(10)      | YES  |     |         |         
+---------+--------------+------+-----+---------+---------
+
+Table: test
+--------+--------------+------+-----+---------+---------
+ Field  | Type         | Null | Key | Default | Remarks 
+--------+--------------+------+-----+---------+---------
+ id     | INT(10)      | NO   | PRI |         |         
+ title  | VARCHAR(255) | YES  |     |         |         
+ info   | TEXT(65535)  | YES  |     |         |         
+ avatar | VARCHAR(255) | YES  |     |         |         
+--------+--------------+------+-----+---------+---------
+
+Table: topic
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | INT(10)      | NO   | PRI |         | 主题ID    
+ adminId    | INT(10)      | NO   |     |         | 主题发布用户ID
+ categoryId | INT(10)      | NO   |     |         | 版块ID    
+ title      | VARCHAR(200) | NO   |     |         | 主题名称    
+ content    | TEXT(65535)  | YES  |     |         | 主题内容    
+ pubDate    | DATE(10)     | YES  |     |         | 主题发布时间  
+ coverPic   | VARCHAR(255) | YES  |     |         | 封面图片地址  
+ link       | VARCHAR(255) | YES  |     |         |         
+ linkName   | VARCHAR(255) | YES  |     |         |         
+------------+--------------+------+-----+---------+---------
+
+Table: user
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ id       | INT(10)      | NO   | PRI |         | 用户ID    
+ userName | VARCHAR(50)  | YES  |     |         | 用户名     
+ password | VARCHAR(100) | YES  |     |         | 密码      
+ nickName | VARCHAR(100) | YES  |     |         | 昵称      
+ email    | VARCHAR(100) | YES  |     |         | 邮箱      
+ tel      | VARCHAR(255) | YES  |     |         |         
+----------+--------------+------+-----+---------+---------
+

@@ -1,0 +1,198 @@
+
+#sql("FuzzyQuery")
+SELECT
+	topic.title,topic.pubDate,topic.id,
+category.`name`
+FROM
+	topic,category
+WHERE
+	title like #para(0)
+	and
+    pubDate like #para(1)
+    and topic.categoryId=category.id
+    ORDER BY
+    	LENGTH(title)
+#end
+
+#sql("manageReplyByCategory")
+select * from(
+
+SELECT
+	reply.*,
+	`user`.nickName
+FROM
+	reply,
+	`user`
+WHERE
+	reply.userId = `user`.id ) as t
+
+	 where nickName= #para(0)
+#end
+
+
+#sql("commitManage")
+SELECT
+	reply.*,
+	`user`.nickName
+FROM
+	reply,
+	`user`
+WHERE
+	reply.userId = `user`.id
+#end
+
+#sql("manageNewByCategory")
+SELECT
+	admin.nickName,
+	topic.*,
+	category.`name`
+FROM
+	admin,
+	topic,
+	category
+WHERE
+	admin.id = topic.adminId
+	AND topic.categoryId = category.id
+	AND topic.categoryId = #para(0)
+ORDER BY
+	id
+#end
+
+#sql("manageNew")
+SELECT
+	admin.nickName,
+	topic.*,
+	category.`name`
+FROM
+	admin,
+	topic,
+	category
+WHERE
+	admin.id = topic.adminId
+	AND topic.categoryId = category.id
+	ORDER BY id
+#end
+
+#sql("personInfoForCollection")
+SELECT
+	collection.* ,topic.title,category.`name`
+FROM
+	collection,
+	topic ,
+	category
+WHERE
+	collection.userId = 1
+	AND collection.topicId = topic.id  and topic.categoryId=category.id
+ORDER BY
+	collectionTime DESC
+#end
+
+#sql("instantNews")
+SELECT
+	topic.*,
+	category.`name`
+FROM
+	topic,
+	category
+WHERE
+	topic.categoryId = category.id
+ORDER BY
+	pubDate DESC
+#end
+
+#sql("viewNewByCategoryForFive-Last")
+SELECT
+	topic.*,
+	admin.nickName
+FROM
+	topic,
+	admin
+WHERE
+	categoryId =#para(0)
+	AND topic.adminId = admin.id
+ORDER BY
+	id DESC
+#end
+
+#sql("viewNewByCategoryForFive")
+SELECT
+	topic.*,
+	category.`name`
+FROM
+	topic,
+	category
+WHERE
+	categoryId = ?
+	AND categoryId = category.id
+	limit 5
+#end
+
+#sql("FindConllectionByTopicId")
+SELECT
+	*
+FROM
+	collection
+WHERE
+	topicId = ?
+	AND userId =?
+#end
+
+#sql("checkLoginUser")
+SELECT * FROM user WHERE userName = ? AND password = ?
+#end
+
+
+
+#sql("checkLoginAdmin")
+SELECT * FROM admin WHERE adminName = ? AND password = ?
+#end
+
+#sql("getAllCategories")
+SELECT *
+FROM  category
+#end
+
+#sql("getTopicListByCategoryId")
+SELECT
+  topic.*, user.nickname
+FROM
+  topic
+  INNER JOIN user ON t_topic.user_id = t_user.id
+WHERE
+  category_id = ?
+ORDER BY
+  pub_date DESC
+#end
+
+#sql("ReplyTopic")
+SELECT
+	reply.*,
+	USER.nickName
+FROM
+	reply
+	INNER JOIN USER ON reply.userId = USER.id
+WHERE
+	topicId = ?
+#end
+
+#sql("hotTopic")
+SELECT
+  topic.*, IFNULL(t.reply_count, 0) AS reply_count,
+             category. NAME AS category_name
+FROM
+  topic
+  LEFT JOIN
+  (SELECT
+     topicId,
+     COUNT(id) AS reply_count
+   FROM
+     reply
+   GROUP BY
+     topicId )
+    AS T
+    ON topic.id = T.topicId
+  INNER JOIN category ON topic.categoryId = category.id
+ORDER BY
+  reply_count DESC
+  LIMIT 12
+#end
