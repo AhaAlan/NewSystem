@@ -89,19 +89,33 @@
             </#if>
         </#list>
 
+
+		<div class="ui divider section hidden"></div>
+
 		<div>
-            <#if page.getTotalPage()!=0>
-                <#if page.getPageNumber() !=1 >
-					<a href="?page=${page.getPageNumber()-1}">上一页</a>
-                </#if>
-                ${page.getPageNumber()}/${page.getTotalPage()}
-                <#if page.getPageNumber() != page.getTotalPage() >
-					<a href="?page=${page.getPageNumber()+1}">下一页</a>
-                </#if>
-            <#else >
-                ${page.getPageNumber()}/${page.getTotalPage()+1}
-            </#if>
+<#--            <#if page.getTotalPage()!=0>-->
+<#--                <#if page.getPageNumber() !=1 >-->
+<#--					<a href="?page=${page.getPageNumber()-1}">上一页</a>-->
+<#--                </#if>-->
+<#--                ${page.getPageNumber()}/${page.getTotalPage()}-->
+<#--                <#if page.getPageNumber() != page.getTotalPage() >-->
+<#--					<a href="?page=${page.getPageNumber()+1}">下一页</a>-->
+<#--                </#if>-->
+<#--            <#else >-->
+<#--                ${page.getPageNumber()}/${page.getTotalPage()+1}-->
+<#--            </#if>-->
+
+			<div class="ui right floated pagination menu">
+				<a href="#" class="icon item disabled">
+                    ${page.getPageNumber()}/${page.getTotalPage()}
+				</a>
+				<form action="${base}/topic/${topicId}" method="post" class="icon item disabled">
+					<input type="text" placeholder="请输入页码 " name="page" >
+					<button type="submit"  >跳转</button>
+				</form>
+			</div>
 		</div>
+
 		<div class="ui section divider"></div>
         <#if (session.user)??><!--判断是否登录-->
 			<form class="ui reply form">
@@ -119,6 +133,7 @@
 	</div>
 
 	<div class="ui section divider"></div>
+
 
 	<script>
         $('.ui.form').form({

@@ -14,8 +14,8 @@ public class LoginValidator extends Validator {
         if(c.getPara("password").isEmpty()){
             addError(errorKey,"密码不能为空");
         }
-//        validateCaptcha("captcha",errorKey,"验证码不正确");
-        }
+        validateCaptcha("captcha",errorKey,"验证码不正确");
+    }
 
     @Override
     protected void handleError(Controller c) {

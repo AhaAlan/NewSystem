@@ -28,19 +28,33 @@
 						<td></td>
 						<td></td>
 						<td>
-							<div class="ui right floated pagination menu">
-                                <#if page.getPageNumber() !=1 >
-									<a class="icon item" href="?page=${page.getPageNumber()-1}">
-										<i class="left chevron icon"></i>
-									</a>
-                                </#if>
 
-                                <#if page.getPageNumber() != page.getTotalPage() >
-									<a class="icon item" href="?page=${page.getPageNumber()+1}">
-										<i class="right chevron icon"></i>
-									</a>
-                                </#if>
+							<div class="ui right floated pagination menu">
+<#--                                <#if page.getPageNumber() !=1 >-->
+<#--									<a class="icon item" href="?page=${page.getPageNumber()-1}">-->
+<#--										<i class="left chevron icon"></i>-->
+<#--									</a>-->
+<#--                                </#if>-->
+
+								<a href="#" class="icon item disabled">
+								${page.getPageNumber()}/${page.getTotalPage()}
+								</a>
+<#--								<a href="#" class="icon item disabled">-->
+<#--                                    ${page.getPageNumber()}/${page.getTotalPage()}-->
+<#--								</a>-->
+								<form action="${base}/category/instantNews" method="post" class="icon item disabled">
+									<input type="text" placeholder="请输入页码 " name="page" >
+									<button type="submit"  >跳转</button>
+								</form>
+<#--                                <#if page.getPageNumber() != page.getTotalPage() >-->
+<#--									<a class="icon item" href="?page=${page.getPageNumber()+1}">-->
+<#--										<i class="right chevron icon"></i>-->
+<#--									</a>-->
+<#--                                </#if>-->
+
+
 							</div>
+
 						</td>
 					</tr>
 					</tbody>
@@ -52,6 +66,40 @@
 
 
 
+	<script>
+
+        <#--function tiaozhuan() {-->
+        <#--    $.ajax({-->
+        <#--        //几个参数需要注意一下-->
+        <#--        type: "POST",//方法类型-->
+        <#--        dataType: "json",//预期服务器返回的数据类型-->
+        <#--        url: '${base}/user/queryNew',-->
+        <#--        data: $('#quert1').serialize(),-->
+        <#--        success:function (res) {-->
+        <#--            if(res.success){-->
+        <#--                window.location.href='${base}/user/queryNewResult'-->
+        <#--            }else{-->
+        <#--                $('.ui.form').form('add errors',[res.message]);-->
+        <#--            }-->
+        <#--        }-->
+        <#--    });-->
+        <#--}-->
+
+
+        <#--.api({-->
+        <#--    method:'POST',-->
+        <#--    url:'${base}/user/queryNew',-->
+        <#--    serializeForm:true,-->
+        <#--    success:function (res) {-->
+        <#--        if(res.success){-->
+        <#--                window.location.href='${base}/user/queryNewResult'-->
+        <#--        }else{-->
+        <#--            $('.ui.form').form('add errors',[res.message]);-->
+        <#--        }-->
+        <#--    }-->
+
+        <#--});-->
+	</script>
 
 
 

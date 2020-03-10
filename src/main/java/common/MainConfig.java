@@ -14,7 +14,7 @@ import controller.*;
 import jfinal.ext.freemarker.FreemarkerHelper;
 import model._MappingKit;
 
-import javax.jnlp.UnavailableServiceException;
+//import javax.jnlp.UnavailableServiceException;
 
 public class MainConfig extends JFinalConfig {
     @Override

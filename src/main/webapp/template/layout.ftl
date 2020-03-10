@@ -122,7 +122,7 @@
 			<div class="ui center two wide ">
 				<img src="${base}/template/image/logo.png" alt="" style="width: 200px;height: 60px">
 			</div>
-			<form class="ui fluid form">
+			<form class="ui fluid form" id="quert1">
 
 				<div class="ui action input fluid ">
 					<div class="filed" >
@@ -138,7 +138,7 @@
 							<option value="2016"> &nbsp;&nbsp;&nbsp;&nbsp;2016</option>
 						</select>
 					</div>
-					<a class="ui primary submit button" >搜索</a><br
+					<button class="ui primary submit button"  onclick="query()" >搜索</button><br>
 <#--					<div type="submit" class="ui button">搜索</div>-->
 				</div>
 
@@ -212,19 +212,40 @@
             }
 
         }
-    }).api({
-        method:'POST',
-        url:'${base}/user/queryNew',
-        serializeForm:true,
-        success:function (res) {
-            if(res.success){
-                    window.location.href='${base}/user/queryNewResult'
-            }else{
-                $('.ui.form').form('add errors',[res.message]);
-            }
-        }
+    })
 
-    });
+
+    function query() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: '${base}/user/queryNew',
+            data: $('#quert1').serialize(),
+            success:function (res) {
+                if(res.success){
+                    window.location.href='${base}/user/queryNewResult'
+                }else{
+                    $('.ui.form').form('add errors',[res.message]);
+                }
+            }
+        });
+    }
+
+
+    <#--.api({-->
+    <#--    method:'POST',-->
+    <#--    url:'${base}/user/queryNew',-->
+    <#--    serializeForm:true,-->
+    <#--    success:function (res) {-->
+    <#--        if(res.success){-->
+    <#--                window.location.href='${base}/user/queryNewResult'-->
+    <#--        }else{-->
+    <#--            $('.ui.form').form('add errors',[res.message]);-->
+    <#--        }-->
+    <#--    }-->
+
+    <#--});-->
 </script>
 
 

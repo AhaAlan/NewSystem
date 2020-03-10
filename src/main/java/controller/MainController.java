@@ -113,6 +113,9 @@ public class MainController extends Controller {
         redirect("/login");
     }
 
+    public void captcha(){
 
+        renderCaptcha();
+    }
 
 }

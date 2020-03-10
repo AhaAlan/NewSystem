@@ -79,26 +79,53 @@
 						<td></td>
 						<td>
 
+<#--							<div class="ui right floated pagination menu">-->
+<#--                                <#if page.getPageNumber() !=1 >-->
+<#--									<a class="icon item" href="?page=${page.getPageNumber()-1}">-->
+<#--										<i class="left chevron icon"></i>-->
+<#--									</a>-->
+<#--                                </#if>-->
+<#--                                <#list  1..(page.getTotalPage()) as count >-->
+<#--									<a class="item">-->
+<#--                                        <#if page.getPageNumber()==count>-->
+<#--											<b>${count}</b>-->
+<#--                                        <#else>-->
+<#--                                            ${count}-->
+<#--                                        </#if>-->
+<#--									</a>-->
+<#--                                </#list>-->
+<#--                                <#if page.getPageNumber() != page.getTotalPage() >-->
+<#--									<a class="icon item" href="?page=${page.getPageNumber()+1}">-->
+<#--										<i class="right chevron icon"></i>-->
+<#--									</a>-->
+<#--                                </#if>-->
+<#--							</div>-->
+
+
 							<div class="ui right floated pagination menu">
-                                <#if page.getPageNumber() !=1 >
-									<a class="icon item" href="?page=${page.getPageNumber()-1}">
-										<i class="left chevron icon"></i>
-									</a>
-                                </#if>
-                                <#list  1..(page.getTotalPage()) as count >
-									<a class="item">
-                                        <#if page.getPageNumber()==count>
-											<b>${count}</b>
-                                        <#else>
-                                            ${count}
-                                        </#if>
-									</a>
-                                </#list>
-                                <#if page.getPageNumber() != page.getTotalPage() >
-									<a class="icon item" href="?page=${page.getPageNumber()+1}">
-										<i class="right chevron icon"></i>
-									</a>
-                                </#if>
+                                <#--                                <#if page.getPageNumber() !=1 >-->
+                                <#--									<a class="icon item" href="?page=${page.getPageNumber()-1}">-->
+                                <#--										<i class="left chevron icon"></i>-->
+                                <#--									</a>-->
+                                <#--                                </#if>-->
+
+								<a href="#" class="icon item disabled">
+                                    ${page.getPageNumber()}/${page.getTotalPage()}
+								</a>
+                                <#--								<a href="#" class="icon item disabled">-->
+                                <#--                                    ${page.getPageNumber()}/${page.getTotalPage()}-->
+                                <#--								</a>-->
+								<form action="${base}/category/" method="post" class="icon item disabled">
+									<input type="text" placeholder="请输入页码 " name="page" >
+									<button type="submit"  >跳转</button>
+								</form>
+                                <#--                                <#if page.getPageNumber() != page.getTotalPage() >-->
+                                <#--									<a class="icon item" href="?page=${page.getPageNumber()+1}">-->
+                                <#--										<i class="right chevron icon"></i>-->
+                                <#--									</a>-->
+                                <#--                                </#if>-->
+
+
 							</div>
 
 						</td>

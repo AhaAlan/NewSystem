@@ -109,44 +109,29 @@ public class TopicController extends Controller {
         }
     }
 
-
-
     public void index() {
-
-
-
         Integer id = getParaToInt(0, 1);
-
         User user = getSessionAttr("user");
-
-
         if (user != null) {
             String findConllectionByTopicId = Db.getSql("FindConllectionByTopicId");
             List<Collection> collections = Collection.dao.find(findConllectionByTopicId, id, user.getId());
             setAttr("collections",collections);
         }
-
-
-
         Topic topic = Topic.dao.findById(id);
+        setAttr("topicId",topic.getId());
 
         if (topic == null) {
             renderHtml("指定的帖子不存在！");
             return;
         } else {
-
             setAttr("topic", topic);
-
             Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
             SqlPara sqlPara = Db.getSqlPara("ReplyTopic");
             sqlPara.addPara(id);//ReplyTopic中有一个问号，代表一个参数
             Page<Reply> page = Reply.dao.paginate(pageNumber, 5, sqlPara);//分页显示方法
             setAttr("page", page);
             renderFreeMarker("view.ftl");
-
         }
-
-
     }
 
 @Before(Login.class)
