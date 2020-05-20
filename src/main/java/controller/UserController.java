@@ -72,13 +72,13 @@ public class UserController extends Controller {
     }
     @Before(Login.class)
     public void personInfo() {
-
-        SqlPara personInfoForCollection = Db.getSqlPara("personInfoForCollection");
+        User user = getSessionAttr("user");
+        SqlPara personInfoForCollection = Db.getSqlPara("personInfoForCollection",user.getId());
         Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
         Page<Collection> page = Collection.dao.paginate(pageNumber, 10, personInfoForCollection);//分页显示方法
         setAttr("page", page);
 
-        User user = getSessionAttr("user");
+
         List<User> users = User.dao.find("select * from user where id =? ", user.getId());
         setAttr("user", users.get(0));
 

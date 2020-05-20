@@ -126,7 +126,7 @@ public class TopicController extends Controller {
         } else {
             setAttr("topic", topic);
             Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
-            SqlPara sqlPara = Db.getSqlPara("ReplyTopic");
+            SqlPara sqlPara = Db.getSqlPara("ReplyTopic",topic.getId());
             sqlPara.addPara(id);//ReplyTopic中有一个问号，代表一个参数
             Page<Reply> page = Reply.dao.paginate(pageNumber, 5, sqlPara);//分页显示方法
             setAttr("page", page);

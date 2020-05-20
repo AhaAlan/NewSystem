@@ -81,7 +81,7 @@ FROM
 	topic ,
 	category
 WHERE
-	collection.userId = 1
+	collection.userId = #para(0)
 	AND collection.topicId = topic.id  and topic.categoryId=category.id
 ORDER BY
 	collectionTime DESC
