@@ -4,6 +4,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.kit.Kv;
 import com.jfinal.validate.Validator;
 
+//登录参数检测
 public class LoginValidator extends Validator {
     private String errorKey="error";
     @Override

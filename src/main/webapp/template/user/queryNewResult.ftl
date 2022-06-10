@@ -1,8 +1,6 @@
 <@override name="title">查询结果</@override>
 <@override name="content">
 
-
-
 	<table class="ui table celled padded striped fluid ">
 		<tbody>
 		<tr>
@@ -11,9 +9,7 @@
                 <#if  page.getList().isEmpty() >
 					<div class="ui negative message">
 						<i class="close icon"></i>
-						<div class="header">
-							没有搜索到相关信息
-						</div>
+						<div class="header">没有搜索到相关信息</div>
 					</div>
 
                 <#else >
@@ -67,10 +63,6 @@
 			<td class="three wide"></td>
 		</tr>
 	</table>
-
-
-
-
 
 
 </@override>

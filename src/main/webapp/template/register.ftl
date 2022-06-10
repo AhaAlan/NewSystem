@@ -12,81 +12,78 @@
         .body{
             background: #dfd7ff;
         }
-
         .margintop{
             margin-top: 100px;
         }
-
     </style>
+</head>
 
-    </head>
-    <body class="body">
-<div class="margintop">
-    <div class="ui grid container  "><!--container 是一个容器，里面的内容会自动的居中-->
-      <div class="eight wides  centered column" >
+<body class="body">
+    <div class="margintop">
+        <div class="ui grid container  "><!--container 是一个容器，里面的内容会自动的居中-->
+          <div class="eight wides  centered column" >
 
-          <div class="ui middle aligned center aligned grid">
-              <div class="column" >
-                  <div class="ui  segment">
-                      <div class="ui   very relaxed stackable grid">
-                          <div class="column left aligned  ">
-                              <form class="ui form" id="login-form">
-                                  <div class="field">
-                                      <label>用户名</label>
-                                      <div class="ui left icon input">
-                                          <input type="text" placeholder="username" name="username">
-                                          <i class="user icon"></i>
+              <div class="ui middle aligned center aligned grid">
+                  <div class="column" >
+                      <div class="ui  segment">
+                          <div class="ui   very relaxed stackable grid">
+                              <div class="column left aligned  ">
+                                  <form class="ui form" id="login-form">
+                                      <div class="field">
+                                          <label>用户名</label>
+                                          <div class="ui left icon input">
+                                              <input type="text" placeholder="username" name="username">
+                                              <i class="user icon"></i>
+                                          </div>
                                       </div>
-                                  </div>
-                                  <div class="field">
-                                      <label>密码</label>
-                                      <div class="ui left icon input">
-                                          <input type="password" placeholder="password" name="password">
-                                          <i class="lock icon"></i>
+                                      <div class="field">
+                                          <label>密码</label>
+                                          <div class="ui left icon input">
+                                              <input type="password" placeholder="password" name="password">
+                                              <i class="lock icon"></i>
+                                          </div>
                                       </div>
-                                  </div>
-                                  <div class="field">
-                                      <label>再次输入密码</label>
-                                      <div class="ui left icon input">
-                                          <input type="password" placeholder="password" name="password2">
-                                          <i class="lock icon"></i>
+                                      <div class="field">
+                                          <label>再次输入密码</label>
+                                          <div class="ui left icon input">
+                                              <input type="password" placeholder="password" name="password2">
+                                              <i class="lock icon"></i>
+                                          </div>
                                       </div>
-                                  </div>
-                                  <div class="field">
-                                      <label>昵称</label>
-                                      <div class="ui left icon input">
-                                          <input type="text" placeholder="nickName" name="nickName">
-                                          <i class="lock icon"></i>
+                                      <div class="field">
+                                          <label>昵称</label>
+                                          <div class="ui left icon input">
+                                              <input type="text" placeholder="nickName" name="nickName">
+                                              <i class="lock icon"></i>
+                                          </div>
                                       </div>
-                                  </div>
-                                  <div class="field">
-                                      <label>邮件</label>
-                                      <div class="ui left icon input">
-                                          <input type="text" placeholder="email" name="email">
-                                          <i class="user icon"></i>
+                                      <div class="field">
+                                          <label>邮件</label>
+                                          <div class="ui left icon input">
+                                              <input type="text" placeholder="email" name="email">
+                                              <i class="user icon"></i>
+                                          </div>
                                       </div>
-                                  </div>
-                                  <div class="field">
-                                      <label>电话</label>
-                                      <div class="ui left icon input">
-                                          <input type="text" placeholder="tel" name="tel">
-                                          <i class="user icon"></i>
+                                      <div class="field">
+                                          <label>电话</label>
+                                          <div class="ui left icon input">
+                                              <input type="text" placeholder="tel" name="tel">
+                                              <i class="user icon"></i>
+                                          </div>
                                       </div>
-                                  </div>
-                                  <div class="ui error message"></div>
-                                  <div class="ui blue submit button fluid  ">注册</div>
-                              </form>
+                                      <div class="ui error message"></div>
+                                      <div class="ui blue submit button fluid  ">注册</div>
+                                  </form>
+                              </div>
+
                           </div>
 
                       </div>
-
                   </div>
               </div>
           </div>
-
-      </div>
+        </div>
     </div>
-</div>
 </body>
 
 <script>
@@ -141,19 +138,6 @@
                 $('.ui.form').form('add errors',[res.message]);
             }
         }
-        // success:function (res) {
-        //     if(res&&res.success){
-        //         return res.success;
-        //     }
-        //     return false;
-        // },
-        // onSuccess:function (res) {
-        //     alert(res.message);
-        //     window.location.href='/main';
-        // },
-        // onFailure:function (res) {
-        //     $('.ui.form').form('add errors',[res.message]);
-        // }
     })
 
 

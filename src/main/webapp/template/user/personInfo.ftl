@@ -8,10 +8,7 @@
 	<script src="${base}/scripts/jquery.min.js"></script>
 	<script src="${base}/scripts/semantic.min.js"></script>
 	<link rel="stylesheet" href="${base}/styles/semantic.min.css"/>
-
 	<title>个人中心</title>
-
-
 </head>
 
 <script>
@@ -22,43 +19,42 @@
         });
     });
 </script>
+
 <body>
-
-
-<div class="ui  top fixed  inverted  menu">
-	<div class="ui container">
-		<a class="item" href="${base}/">
-			<i class="home icon"></i> 主页
-		</a>
-		<a class="item" href="${base}/category/instantNews">
-			<i class="home icon"></i> 即时新闻
-		</a>
-        <#list categories as category>
-			<a class="item" href="${base}/category/${category.id!''}">
-                ${category.name!''}
+	<div class="ui  top fixed  inverted  menu">
+		<div class="ui container">
+			<a class="item" href="${base}/">
+				<i class="home icon"></i> 主页
 			</a>
-        </#list>
+			<a class="item" href="${base}/category/instantNews">
+				<i class="home icon"></i> 即时新闻
+			</a>
+			<#list categories as category>
+				<a class="item" href="${base}/category/${category.id!''}">
+					${category.name!''}
+				</a>
+			</#list>
 
-		<div class="right menu ">
-			<div class="ui dropdown item">
-				<i class="user icon"></i>
-                <#if (session.user)??>
-					<a href="${base}/user/personInfo"> 个人中心 </a>
-                </#if>
-				<i class="icon dropdown"></i>
-				<div class="menu">
-                    <#if (session.user)??>
-						<a href="${base}/logout" class="item">退出</a>
-                    <#else>
-						<a href="${base}/register" class="item">注册</a>
-						<a href="${base}/login" class="item">登录</a>
-                    </#if>
+			<div class="right menu ">
+				<div class="ui dropdown item">
+					<i class="user icon"></i>
+					<#if (session.user)??>
+						<a href="${base}/user/personInfo"> 个人中心 </a>
+					</#if>
+					<i class="icon dropdown"></i>
+					<div class="menu">
+						<#if (session.user)??>
+							<a href="${base}/logout" class="item">退出</a>
+						<#else>
+							<a href="${base}/register" class="item">注册</a>
+							<a href="${base}/login" class="item">登录</a>
+						</#if>
 
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 
 <table class="ui table celled padded fluid ">
@@ -162,10 +158,8 @@
 </table>
 
 
-<div class="footer ui bottom fixed menu">
-
-	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公众号：程序员王不二 ，版权所有 </b></div>
-
-</div>
+	<div class="footer ui bottom fixed menu">
+		<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@UTSC Project TextClassification </b></div>
+	</div>
 </body>
 </html>

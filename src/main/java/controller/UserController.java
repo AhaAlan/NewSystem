@@ -32,19 +32,19 @@ public class UserController extends Controller {
         renderFreeMarker("queryNewResult.ftl");
     }
 
-
+    //按年度查询新闻
     public static String search_query="null";
     public static String year_query="null";
     public void queryNew(){
         search_query = getPara("search");
         year_query = getPara("year");
-
         Boolean success = true;
         String message = success ? "修改成功" : "修改失败";
         Kv result = Kv.by("success", success).set("message", message);
         renderJson(result);
-
     }
+
+    //修改个人信息
     @Before(Login.class)
     public void DomodifiyPersonInfo() {
         String userName = getPara("userName");
@@ -53,23 +53,21 @@ public class UserController extends Controller {
         String tel = getPara("tel");
         String email = getPara("email");
         Integer id = getParaToInt("id");
-
-
         Db.update("update user set userName=?,password=?,nickName=?,tel=?,email=? where id=? ", userName, password, nickName, tel, email, id);
         Boolean success = true;
         String message = success ? "修改成功" : "修改失败";
         Kv result = Kv.by("success", success).set("message", message);
         renderJson(result);
-
     }
+
     @Before(Login.class)
     public void modifiyPersonInfo() {
         Integer paraToInt = getParaToInt(0, -1);
         User byId = User.dao.findById(paraToInt);
         setAttr("user", byId);
         renderFreeMarker("modifiyPersonInfo.ftl");
-
     }
+
     @Before(Login.class)
     public void personInfo() {
         User user = getSessionAttr("user");
@@ -78,18 +76,14 @@ public class UserController extends Controller {
         Page<Collection> page = Collection.dao.paginate(pageNumber, 10, personInfoForCollection);//分页显示方法
         setAttr("page", page);
 
-
         List<User> users = User.dao.find("select * from user where id =? ", user.getId());
         setAttr("user", users.get(0));
 
-
         renderFreeMarker("personInfo.ftl");
-
     }
 
     @Before(Login.class)
     public void index() {
-
 //        renderHtml("学生");
 //        renderFreeMarker("index.ftl");
         redirect("/");

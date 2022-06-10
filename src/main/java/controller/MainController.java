@@ -37,13 +37,15 @@ public class MainController extends Controller {
         renderFreeMarker("register.ftl");
     }
 
-    @Before(RegisterValidator.class)
+    //注册
+    @Before(RegisterValidator.class)    //@Before: 前置通知, 在方法执行之前执行
     public void doRegister() {
         String username = getPara("username");
         String password = getPara("password");
         String nickName = getPara("nickName");
         String email = getPara("email");
         String tel = getPara("tel");
+
         User user = new User();
         user.setUserName(username);
         user.setPassword(password);
@@ -61,14 +63,14 @@ public class MainController extends Controller {
         Kv result = Kv.by("success", success).set("message", message);
         System.out.print(success);
         renderJson(result);
-
     }
 
+    //登录
     public void login() {
-
         renderFreeMarker("login.ftl");
     }
 
+    //登录前的参数检测
     @Before(LoginValidator.class)
     public void loginCheck() {
         boolean success = false;
@@ -108,13 +110,14 @@ public class MainController extends Controller {
         renderJson(result);
     }
 
+    //登出
     public void logout() {
         removeSessionAttr("user");
         redirect("/login");
     }
 
+    //验证码
     public void captcha(){
-
         renderCaptcha();
     }
 

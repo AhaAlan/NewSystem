@@ -13,7 +13,6 @@
 
 	<title><@block name="title"></@block></title>
 
-
 	<style type="text/css">
 
 		ul,
@@ -94,9 +93,6 @@
 			background-image: url('${base}/template//images/next.png');
 		}
 
-		/*body {*/
-		/*	background-color: #DADADA;*/
-		/*}*/
 	</style>
 
 </head>
@@ -122,7 +118,6 @@
 				<img src="${base}/template/image/logo.png" alt="" style="width: 400px;height: 80px">
 			</div>
 
-
 			<form class="ui fluid form" id="quert1">
 				<div class="ui action input fluid ">
 					<div class="filed" >
@@ -139,7 +134,6 @@
 						</select>
 					</div>
 					<button class="ui primary submit button"  onclick="query()" >搜索</button><br>
-<#--					<div type="submit" class="ui button">搜索</div>-->
 				</div>
 
 			</form>
@@ -176,7 +170,6 @@
 						<a href="${base}/register" class="item">注册</a>
 						<a href="${base}/login" class="item">登录</a>
                     </#if>
-
 				</div>
 			</div>
 		</div>
@@ -185,13 +178,9 @@
 <@block name="content">
 </@block>
 <div class="footer ui bottom fixed menu">
-
-	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新闻管理
-			&copy;公众号：程序员王不二 ，版权所有</b></div>
-
+	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ UTSC Project TextClassification </b></div>
 </div>
 </body>
-
 
 <script>
     $('.ui.form').form({
@@ -214,10 +203,8 @@
         }
     })
 
-
     function query() {
         $.ajax({
-            //几个参数需要注意一下
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: '${base}/user/queryNew',
@@ -232,20 +219,6 @@
         });
     }
 
-
-    <#--.api({-->
-    <#--    method:'POST',-->
-    <#--    url:'${base}/user/queryNew',-->
-    <#--    serializeForm:true,-->
-    <#--    success:function (res) {-->
-    <#--        if(res.success){-->
-    <#--                window.location.href='${base}/user/queryNewResult'-->
-    <#--        }else{-->
-    <#--            $('.ui.form').form('add errors',[res.message]);-->
-    <#--        }-->
-    <#--    }-->
-
-    <#--});-->
 </script>
 
 

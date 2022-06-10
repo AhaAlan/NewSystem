@@ -16,9 +16,7 @@ import model.User;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Administrator on 2018/5/18 0018.
- */
+
 @Before(CategoryNavbarInterceotor.class)
 public class TopicController extends Controller {
     @Before(Login.class)
@@ -32,12 +30,9 @@ public class TopicController extends Controller {
             renderHtml("指定的帖子不存在！");
             return;
         } else {
-
-
             String findConllectionByTopicId = Db.getSql("FindConllectionByTopicId");
             List<Collection> collections = Collection.dao.find(findConllectionByTopicId, topicId,userId);
             setAttr("collections",collections);
-
             setAttr("topic", topic);
             Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
             SqlPara sqlPara = Db.getSqlPara("ReplyTopic");
@@ -47,9 +42,9 @@ public class TopicController extends Controller {
             renderFreeMarker("view.ftl");
         }
     }
+
     @Before(Login.class)
     public void DoCollectTopic(){
-
         Integer topicId  = getParaToInt(0, -1);
         Integer userId  = getParaToInt(1, -1);
         Collection collection = new Collection();
@@ -59,20 +54,15 @@ public class TopicController extends Controller {
         collection.setCollectionTime(date);
         collection.save();
 
-
         Topic topic = Topic.dao.findById(topicId);
 
         if (topic == null) {
             renderHtml("指定的帖子不存在！");
             return;
         } else {
-
-
             String findConllectionByTopicId = Db.getSql("FindConllectionByTopicId");
             List<Collection> collections = Collection.dao.find(findConllectionByTopicId, topicId, userId);
             setAttr("collections", collections);
-
-
             setAttr("topic", topic);
             Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
             SqlPara sqlPara = Db.getSqlPara("ReplyTopic");
@@ -81,7 +71,6 @@ public class TopicController extends Controller {
             setAttr("page", page);
             renderFreeMarker("view.ftl");
         }
-
     }
 
     @Before({CategoryNavbarInterceotor.class,Login.class})
@@ -91,14 +80,11 @@ public class TopicController extends Controller {
 
         Integer replyTopicId = getParaToInt(1, -1);
 
-
         Topic topic = Topic.dao.findById(replyTopicId);
-
         if (topic == null) {
             renderHtml("指定的帖子不存在！");
             return;
         } else {
-
             setAttr("topic", topic);
             Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
             SqlPara sqlPara = Db.getSqlPara("ReplyTopic");
@@ -119,7 +105,6 @@ public class TopicController extends Controller {
         }
         Topic topic = Topic.dao.findById(id);
         setAttr("topicId",topic.getId());
-
         if (topic == null) {
             renderHtml("指定的帖子不存在！");
             return;
@@ -134,7 +119,8 @@ public class TopicController extends Controller {
         }
     }
 
-@Before(Login.class)
+    //评论
+    @Before(Login.class)
     public void reply() {
         boolean success = false;
         Integer userId = getParaToInt("user_id", -1);
@@ -149,6 +135,7 @@ public class TopicController extends Controller {
         reply.setPubDate(date);
         reply.setStatus(0);
         reply.save();
+
         success = true;
         String message = success ? "回复成功" : "回复失败";
         Kv result = Kv.by("success", success).set("message", message);

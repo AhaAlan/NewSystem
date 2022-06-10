@@ -1,7 +1,6 @@
 <@override name="title">首页</@override>
 <@override name="content">
 
-
 	<table class="ui table celled padded fluid ">
 		<tbody>
 		<tr>
@@ -39,54 +38,52 @@
 					<tr>
 						<td><a href="${base}/topic/${topies.get(11).id}">${topies.get(11).title}</a></td>
 					</tr>
-
 					</tbody>
 				</table>
 			</td>
+
 			<td class="eight wide">
 				<div class="wrapper" style="width:799px ;height: 400px">
 					<div class="box">
 						<ul class="carousel-inner">
-							<li class="carousel-item">
-								<a href="${base}/topic/${topies.get(0).id}"> <img style="width:799px ;height: 400px"
-								                                                  src="${base}${topies.get(0).coverPic}"
-								                                                  alt="" title="${topies.get(0).title}"></a>
 
-							</li>
 							<li class="carousel-item">
-								<a href="${base}/topic/${topies.get(1).id}"> <img style="width:799px ;height: 400px"
-								                                                  src="${base}${topies.get(1).coverPic}"
-								                                                  alt="" title="${topies.get(1).title}"></a>
-							</li>
-							<li class="carousel-item">
-								<a href="${base}/topic/${topies.get(2).id}"> <img style="width:799px ;height: 400px"
-								                                                  src="${base}${topies.get(2).coverPic}"
-								                                                  alt="" title="${topies.get(2).title}"></a>
-							</li>
-							<li class="carousel-item">
-								<a href="${base}/topic/${topies.get(3).id}"> <img style="width:799px ;height: 400px"
-								                                                  src="${base}${topies.get(3).coverPic}"
-								                                                  alt="" title="${topies.get(3).title}"></a>
+								<a href="${base}/topic/${topies.get(0).id}">
+									<img style="width:799px ;height: 400px" src="${base}${topies.get(0).coverPic}" alt="" title="${topies.get(0).title}">
+								</a>
 							</li>
 
+							<li class="carousel-item">
+								<a href="${base}/topic/${topies.get(1).id}">
+									<img style="width:799px ;height: 400px" src="${base}${topies.get(1).coverPic}" alt="" title="${topies.get(1).title}">
+								</a>
+							</li>
+
+							<li class="carousel-item">
+								<a href="${base}/topic/${topies.get(2).id}">
+									<img style="width:799px ;height: 400px" src="${base}${topies.get(2).coverPic}" alt="" title="${topies.get(2).title}">
+								</a>
+							</li>
+
+							<li class="carousel-item">
+								<a href="${base}/topic/${topies.get(3).id}">
+									<img style="width:799px ;height: 400px" src="${base}${topies.get(3).coverPic}" alt="" title="${topies.get(3).title}">
+								</a>
+							</li>
 						</ul>
 					</div>
-
 				</div>
-
 			</td>
 			<td class="one wide"></td>
 		</tr>
 	</table>
 
-
-
-<script>
-    $('.box').sowingMap({
-        count: 4,
-        time: 3000
-    });
-</script>
+	<script>
+		$('.box').sowingMap({
+			count: 4,
+			time: 3000
+		});
+	</script>
 
 </@override>
 <@extends name="layout.ftl"></@extends>
