@@ -12,7 +12,10 @@
 
 	<style type="text/css">
 		body {
-			background-color: #DADADA;
+			/*background-color: #DADADA;*/
+			background-image: url("../template/image/bg.jpg");
+
+		background-size :100% 100%;
 		}
 
 		body > .grid {

@@ -11,7 +11,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.SqlPara;
 import com.jfinal.upload.UploadFile;
-import com.mysql.jdbc.Blob;
+import com.mysql.cj.jdbc.Blob;
 import interceptor.Login;
 import model.*;
 

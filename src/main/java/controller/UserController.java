@@ -84,8 +84,7 @@ public class UserController extends Controller {
 
 
         renderFreeMarker("personInfo.ftl");
-
-
+        
     }
 
     @Before(Login.class)

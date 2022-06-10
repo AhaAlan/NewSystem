@@ -116,14 +116,14 @@
 	<div class="ui grid ">
 
 
-		<div class="eight wide column center aligned centered middle aligned "
-		     style="margin: 25px auto;background-color:white"  >
+		<div class="eight wide column center aligned centered middle aligned "    style="margin: auto auto;background-color:white"  >
 
-			<div class="ui center two wide ">
-				<img src="${base}/template/image/logo.png" alt="" style="width: 200px;height: 60px">
+			<div class="ui center two wide " style="margin: 0px 0px;background-color:white">
+				<img src="${base}/template/image/logo.png" alt="" style="width: 400px;height: 80px">
 			</div>
-			<form class="ui fluid form" id="quert1">
 
+
+			<form class="ui fluid form" id="quert1">
 				<div class="ui action input fluid ">
 					<div class="filed" >
 						<input type="text" placeholder="搜索..." name="search" style="width: 600px;height: 60px">
@@ -186,8 +186,8 @@
 </@block>
 <div class="footer ui bottom fixed menu">
 
-	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宁夏大学信息工程学院XXX同学毕业设计
-			&copy;2019-2020 </b></div>
+	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新闻管理
+			&copy;公众号：程序员王不二 ，版权所有</b></div>
 
 </div>
 </body>

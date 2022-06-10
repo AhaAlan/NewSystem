@@ -1,4 +1,3 @@
-
 #sql("FuzzyQuery")
 SELECT
 	topic.title,topic.pubDate,topic.id,

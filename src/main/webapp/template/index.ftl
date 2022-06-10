@@ -81,8 +81,6 @@
 
 
 
-
-
 <script>
     $('.box').sowingMap({
         count: 4,

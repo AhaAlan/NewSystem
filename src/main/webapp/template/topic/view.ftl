@@ -2,9 +2,6 @@
 <@override name="title">${topic.title}</@override>
 <@override name="content">
 
-
-
-
 	<div class="ui text container ">
 
 	<h2 class="ui header"></h2>

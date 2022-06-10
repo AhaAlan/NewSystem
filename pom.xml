@@ -69,11 +69,10 @@
             <artifactId>cos</artifactId>
             <version>2017.5</version>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
+            <version>8.0.11</version>
         </dependency>
 
         <dependency>
@@ -94,12 +93,7 @@
             <version>0.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>cn.edu.nxu.mjl</groupId>
-            <artifactId>jfinal-ext-test</artifactId>
-            <version>0.1</version>
-            <scope>test</scope>
-        </dependency>
+
 
         <dependency>
             <groupId>org.slf4j</groupId>

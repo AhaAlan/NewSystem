@@ -164,8 +164,7 @@
 
 <div class="footer ui bottom fixed menu">
 
-	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宁夏大学信息工程学院XXX同学毕业设计
-			&copy;2019-2020 </b></div>
+	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公众号：程序员王不二 ，版权所有 </b></div>
 
 </div>
 </body>
