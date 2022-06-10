@@ -25,7 +25,10 @@ import java.util.List;
 @Before(Login.class)
 public class AdminController extends Controller {
     public static String nickNameForUser;
+    public static String nickNameForAdmin;
+    public static String nickNameForReply;
 
+    /*====================================用户管理========================================*/
     //通过昵称搜索用户
     public void searchUserByNickNameResult(){
         List<User> user = User.dao.find("select * from user where nickName =?", nickNameForUser);
@@ -66,10 +69,12 @@ public class AdminController extends Controller {
         renderJson(result);
     }
 
+    //renderFreeMarker方法，完成视图渲染
     public void addUser(){
         renderFreeMarker("addUser.ftl");
     }
 
+    //修改用户信息：更改用户信息，并返回结果
     public void DomodifyUserInfo(){
         String userName = getPara("userName");
         String nickName = getPara("nickName");
@@ -77,9 +82,7 @@ public class AdminController extends Controller {
         String tel = getPara("tel");
         String email = getPara("email");
         String password = getPara("password");
-        Db.update("update user set userName=?,nickName=?,password=?,tel=?,email=? where id=?",userName,nickName,password,tel
-                ,email,id);
-
+        Db.update("update user set userName=?,nickName=?,password=?,tel=?,email=? where id=?",userName,nickName,password,tel,email,id);
         Boolean success = true;
         String message = success ? "成功" : "失败";
         Kv result = Kv.by("success", success).set("message", message);
@@ -93,6 +96,7 @@ public class AdminController extends Controller {
         renderFreeMarker("modifyUserInfo.ftl");
     }
 
+    //删除用户信息
     public void deleteUserInfo(){
         Integer paraToInt = getParaToInt(0, -1);
         Db.delete("delete from user where id =?",paraToInt);
@@ -108,6 +112,8 @@ public class AdminController extends Controller {
         renderFreeMarker("manageUser.ftl");
     }
 
+    /*==============================管理员管理===================================*/
+    //通过昵称搜索管理员
     public void searchAdminByNickNameResult(){
         List<Admin> admins = Admin.dao.find("select * from admin where nickName =?", nickNameForAdmin);
         setAttr("admins",admins);
@@ -115,9 +121,8 @@ public class AdminController extends Controller {
     }
 
 
-    public static String nickNameForAdmin;
     public void searchAdminByNickName(){
-         nickNameForAdmin = getPara("nickName");
+        nickNameForAdmin = getPara("nickName");
         Boolean success = true;
         String message = success ? "成功" : "失败";
         Kv result = Kv.by("success", success).set("message", message);
@@ -125,7 +130,7 @@ public class AdminController extends Controller {
         renderJson(result);
     }
 
-
+    //增加管理员信息
     public void DoAddAdminInfo(){
         String adminName = getPara("adminName");
         String nickName = getPara("nickName");
@@ -133,6 +138,7 @@ public class AdminController extends Controller {
         String email = getPara("email");
         Integer Super = getParaToInt("super");
         String password = getPara("password");
+
         Admin admin = new Admin();
         admin.setAdminName(adminName);
         admin.setPassword(password);
@@ -160,14 +166,11 @@ public class AdminController extends Controller {
         String email = getPara("email");
         Integer Super = getParaToInt("super");
         String password = getPara("password");
-        Db.update("update admin set adminName=?,nickName=?,password=?,tel=?,email=?,super=? where id=?",adminName,nickName,password,tel
-        ,email,Super,id);
-
+        Db.update("update admin set adminName=?,nickName=?,password=?,tel=?,email=?,super=? where id=?",adminName,nickName,password,tel,email,Super,id);
         Boolean success = true;
         String message = success ? "成功" : "失败";
         Kv result = Kv.by("success", success).set("message", message);
         renderJson(result);
-
     }
 
     public void modifyAdminInfo(){
@@ -176,6 +179,7 @@ public class AdminController extends Controller {
         setAttr("admin",admins.get(0));
         renderFreeMarker("modifyAdminInfo.ftl");
     }
+
     public void deleteAdminInfo(){
         Integer paraToInt = getParaToInt(0, -1);
         Db.delete("delete from admin where id =?",paraToInt);
@@ -185,13 +189,15 @@ public class AdminController extends Controller {
         renderFreeMarker("manageAdmin.ftl");
     }
 
-
+    //管理管理员
     public void manageAdmin(){
         List<Admin> admins = Admin.dao.find("select * from admin");
         setAttr("admins",admins);
         renderFreeMarker("manageAdmin.ftl");
     }
 
+    /*============================================评论管理========================================*/
+    //根据类别管理评论信息
     public void manageReplyByCategory() {
         List<Category> categories = Category.dao.find("select * from category");
         setAttr("categories", categories);
@@ -204,8 +210,6 @@ public class AdminController extends Controller {
         renderFreeMarker("commitManage.ftl");
     }
 
-    public static String nickNameForReply;
-
     public void searchReplyByCategoryId() {
         nickNameForReply = getPara("nickName");
         Boolean success = true;
@@ -216,7 +220,6 @@ public class AdminController extends Controller {
     }
 
     public void refuseReply() {
-
         List<Category> categories = Category.dao.find("select * from category");
         setAttr("categories", categories);
 
@@ -260,6 +263,7 @@ public class AdminController extends Controller {
         renderFreeMarker("commitManage.ftl");
     }
 
+    /**===============================新闻管理=================================*/
     public void DomodifyNew() {
         Integer id1 = getParaToInt("id");
         String title = getPara("title");
@@ -325,7 +329,6 @@ public class AdminController extends Controller {
     }
 
     public void manageNew() {
-
         List<Category> categories = Category.dao.find("select * from category");
         setAttr("categories", categories);
         SqlPara manageNew = Db.getSqlPara("manageNew");
@@ -339,14 +342,12 @@ public class AdminController extends Controller {
 
 
     public void DouploadCoverPic() {
-
         Boolean success = false;
         UploadFile upload = this.getFile();
         String fileName = upload.getOriginalFileName();
 
         File file = upload.getFile();
         String contentType = upload.getContentType();
-
 
         String webRootPath = PathKit.getWebRootPath();//得到web路径
 
@@ -360,7 +361,6 @@ public class AdminController extends Controller {
         String saveNme = saveFilePathforimage + savaFileName;
 
         String mysql_save_Path = "/template/newImg/" + savaFileName;
-
 
         File Direction = new File(saveFilePathforimage);
         //判断文件夹是否存在 如果不存在 就创建文件夹
@@ -395,8 +395,6 @@ public class AdminController extends Controller {
 
 
     public void upload() {
-
-
         Boolean success = false;
         UploadFile upload = this.getFile();
         String fileName = upload.getOriginalFileName();
@@ -510,18 +508,10 @@ public class AdminController extends Controller {
         topic.setLinkName(linkName);
         tempID = id + 1;
         topic.save();
-//
-//        Test test = new Test();
-//        test.setTitle(title);
-//        test.setInfo(contetnt);
-//        test.setAvatar("null");
-//        test.save();
-
         Boolean success = true;
         String message = success ? "成功" : "失败";
         Kv result = Kv.by("success", success).set("message", message);
         renderJson(result);
-
     }
 
 
