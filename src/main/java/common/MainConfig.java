@@ -14,7 +14,7 @@ import controller.*;
 import jfinal.ext.freemarker.FreemarkerHelper;
 import model._MappingKit;
 
-//import javax.jnlp.UnavailableServiceException;
+/**可以看做是Jfinal项目的启动文件*/
 
 public class MainConfig extends JFinalConfig {
     @Override
@@ -83,6 +83,7 @@ public class MainConfig extends JFinalConfig {
 
     }
 
+    //启动程序
     public static void main(String[] args) {
         //使用Jetty运行Jfinal项目   port参数为端口默认8080， context为上下文路径
         //完整的项目URL   http://server_or_ip:port/context/controller-key

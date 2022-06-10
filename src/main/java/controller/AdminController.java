@@ -11,7 +11,6 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.activerecord.SqlPara;
 import com.jfinal.upload.UploadFile;
-import com.mysql.cj.jdbc.Blob;
 import interceptor.Login;
 import model.*;
 
@@ -25,16 +24,16 @@ import java.util.List;
 
 @Before(Login.class)
 public class AdminController extends Controller {
+    public static String nickNameForUser;
 
+    //通过昵称搜索用户
     public void searchUserByNickNameResult(){
-
         List<User> user = User.dao.find("select * from user where nickName =?", nickNameForUser);
         setAttr("user",user);
         renderFreeMarker("manageUser.ftl");
     }
 
-    public static String nickNameForUser;
-
+    //返回搜索结果（成功/失败）
     public void searchUserByNickName(){
         nickNameForUser = getPara("nickName");
         Boolean success = true;
@@ -44,15 +43,15 @@ public class AdminController extends Controller {
         renderJson(result);
     }
 
-
+    //新增用户：添加用户信息，并返回结果信息
     public void DoAddUserInfo(){
+        //从前端获取值
         String userName = getPara("userName");
         String nickName = getPara("nickName");
         String tel = getPara("tel");
         String email = getPara("email");
         String password = getPara("password");
-
-
+        //创建新用户，并设置值
         User user = new User();
         user.setUserName(userName);
         user.setPassword(password);
@@ -60,7 +59,7 @@ public class AdminController extends Controller {
         user.setEmail(email);
         user.setTel(tel);
         user.save();
-
+        //判断并返回结果
         Boolean success = true;
         String message = success ? "成功" : "失败";
         Kv result = Kv.by("success", success).set("message", message);
