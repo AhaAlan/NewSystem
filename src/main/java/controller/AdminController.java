@@ -479,13 +479,22 @@ public class AdminController extends Controller {
 
     public static int tempID = -1;
 
+    //保存传入的新闻
     public void saveNew() {
-
         String title = getPara("title");
         String contetnt = getPara("content");
         String link = getPara("link");
         String linkName = getPara("linkName");
-        Integer categoryId = getParaToInt("category");
+
+        //通过模型判断所属类别
+        Integer categoryId = 1;
+        /**
+         * 待补充
+         *
+         *
+         *
+         * **/
+
 
         Date date = new Date();
         Admin admin = getSessionAttr("user");
@@ -508,6 +517,7 @@ public class AdminController extends Controller {
         topic.setLinkName(linkName);
         tempID = id + 1;
         topic.save();
+
         Boolean success = true;
         String message = success ? "成功" : "失败";
         Kv result = Kv.by("success", success).set("message", message);
