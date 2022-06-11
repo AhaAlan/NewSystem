@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 新闻管理系统
 
 ## 1、项目介绍
@@ -63,3 +64,7 @@
 
 
 
+=======
+# NewSystem
+ustc project 2022/6/10 ：textclassification
+>>>>>>> master1/master
