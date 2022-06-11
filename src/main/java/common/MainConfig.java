@@ -14,7 +14,11 @@ import controller.*;
 import jfinal.ext.freemarker.FreemarkerHelper;
 import model._MappingKit;
 
-/**可以看做是Jfinal项目的启动文件*/
+/**
+ * 启动文件
+ * 可以看做是Jfinal项目的启动文件
+ * 2022.6.11
+ */
 
 public class MainConfig extends JFinalConfig {
     @Override
@@ -25,7 +29,6 @@ public class MainConfig extends JFinalConfig {
         constants.setDevMode(getPropertyToBoolean("devMode", false));
         //注册freemarker扩展标签，实现模板继承
         FreemarkerHelper.registerExtensionTag();
-
     }
 
     @Override
@@ -44,51 +47,48 @@ public class MainConfig extends JFinalConfig {
 
     }
 
+    //模板引擎模块
+    //项目升级如果不使用Template Engine该方法可以留空。
     @Override
     public void configEngine(Engine engine) {
 
     }
 
+    // 配置了两个插件：DruidPlugin与ActiveRecordPlugin，前者是druid数据源插件，后者是ActiveRecrod支持插件
     @Override
     public void configPlugin(Plugins plugins) {
+        //1.创建druid数据源插件
         //从myconfig.properties中读取数据库jdbc连接信息 建立一个Druid数据库连接池插件
-        DruidPlugin dp = new DruidPlugin(getProperty("jdbcUrl"),
-                getProperty("user", "root"),
-                getProperty("password", "password"));
-
+        DruidPlugin dp = new DruidPlugin(getProperty("jdbcUrl"), getProperty("user", "root"), getProperty("password", "password"));
         plugins.add(dp);
-        //创建ActiveRecord插件
+
+        //2.创建ActiveRecord插件
+        //ActiveReceord 中定义了 addMapping()方法，该方法建立了数据库表名到 Model 的映射关系。
         ActiveRecordPlugin arp = new ActiveRecordPlugin(dp);
-        //设置SQL方言为MySQL
-        arp.setDialect(new MysqlDialect());
-        plugins.add(arp);
-
+        arp.setDialect(new MysqlDialect());//设置SQL方言为MySQL
         _MappingKit.mapping(arp);
-
         arp.setBaseSqlTemplatePath(PathKit.getRootClassPath());
         arp.addSqlTemplate("sql.jtl");
+        plugins.add(arp);
 
     }
 
+    //添加Session拦截器，可以在模板中使用会话
     @Override
     public void configInterceptor(Interceptors interceptors) {
-        //添加Session拦截器，可以在模板中使用会话
         interceptors.add(new SessionInViewInterceptor());
     }
 
+    //添加上下文handler，可以在模板中使用${base}获取应用上下文路径
     @Override
     public void configHandler(Handlers handlers) {
-        //添加上下文handler，可以在模板中使用${base}获取应用上下文路径
         handlers.add(new ContextPathHandler("base"));
-
     }
 
     //启动程序
+    //使用Jetty运行Jfinal项目，port参数为端口默认8080， context为上下文路径
+    //完整的项目URL   http://server_or_ip:port/context/controller-key
     public static void main(String[] args) {
-        //使用Jetty运行Jfinal项目   port参数为端口默认8080， context为上下文路径
-        //完整的项目URL   http://server_or_ip:port/context/controller-key
         JFinal.start("src/main/webapp", 8080, "/");
-       // JFinal.start("src/main/webapp", 8080, "/", 15);
-        //加上15之后   链接数据库的时候会报错的
     }
 }

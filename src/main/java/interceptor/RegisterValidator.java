@@ -4,7 +4,10 @@ import com.jfinal.core.Controller;
 import com.jfinal.kit.Kv;
 import com.jfinal.validate.Validator;
 
-//注册参数检测
+/**、
+ * 注册参数检测
+ * 2022.6.11
+ */
 public class RegisterValidator extends Validator {
     private String errorKey="error";
     @Override
@@ -27,7 +30,6 @@ public class RegisterValidator extends Validator {
         if(c.getPara("tel").isEmpty()){
             addError(errorKey,"请输入电话");
         }
-
     }
 
     @Override

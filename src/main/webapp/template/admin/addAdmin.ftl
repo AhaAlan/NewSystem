@@ -1,7 +1,6 @@
 <@override name="title">添加管理员</@override>
 <@override name="content">
 
-
 	<table class="ui table celled padded fluid ">
 		<tbody>
 		<tr>

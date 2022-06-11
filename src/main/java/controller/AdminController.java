@@ -22,17 +22,29 @@ import java.nio.channels.FileChannel;
 import java.util.Date;
 import java.util.List;
 
+/*
+* 管理员模块
+* 主要功能：新闻的增删改查、对用户进行合法性行为进行检查，包括用户对新闻的评论审核、用户的帐号的合法性，收藏用户的行为日志对友情链接的维护与更新。
+* 2022.6.11
+*/
+
 @Before(Login.class)
 public class AdminController extends Controller {
+    /*==================================全局静态变量=======================================*/
+    //用来盛放从前端输入的值
     public static String nickNameForUser;
     public static String nickNameForAdmin;
     public static String nickNameForReply;
+    public static int selectFlag = -1;  //新闻类别
 
-    /*====================================用户管理========================================*/
+    /*====================================用户信息管理========================================*/
     //通过昵称搜索用户
     public void searchUserByNickNameResult(){
         List<User> user = User.dao.find("select * from user where nickName =?", nickNameForUser);
+        //setAttr(）转调了 HttpServletRequest.setAttribute(String, Object)，该方法可以将 各种数据传递给 View 并在 View 中显示出来。
         setAttr("user",user);
+        //Jfinal默认render视图模式为Freemarker
+        //renderFreeMarker()：渲染名为 “xxxx” 的视图，且视图类型为FreeMarker
         renderFreeMarker("manageUser.ftl");
     }
 
@@ -112,7 +124,7 @@ public class AdminController extends Controller {
         renderFreeMarker("manageUser.ftl");
     }
 
-    /*==============================管理员管理===================================*/
+    /*====================================管理员信息管理===================================*/
     //通过昵称搜索管理员
     public void searchAdminByNickNameResult(){
         List<Admin> admins = Admin.dao.find("select * from admin where nickName =?", nickNameForAdmin);
@@ -196,7 +208,7 @@ public class AdminController extends Controller {
         renderFreeMarker("manageAdmin.ftl");
     }
 
-    /*============================================评论管理========================================*/
+    /*=============================================评论管理==========================================*/
     //根据类别管理评论信息
     public void manageReplyByCategory() {
         List<Category> categories = Category.dao.find("select * from category");
@@ -235,7 +247,6 @@ public class AdminController extends Controller {
     }
 
     public void passReply() {
-
         List<Category> categories = Category.dao.find("select * from category");
         setAttr("categories", categories);
 
@@ -251,7 +262,6 @@ public class AdminController extends Controller {
     }
 
     public void commitManage() {
-
         List<Category> categories = Category.dao.find("select * from category");
         setAttr("categories", categories);
 
@@ -263,7 +273,7 @@ public class AdminController extends Controller {
         renderFreeMarker("commitManage.ftl");
     }
 
-    /**===============================新闻管理=================================*/
+    /*==============================================新闻管理===========================================*/
     public void DomodifyNew() {
         Integer id1 = getParaToInt("id");
         String title = getPara("title");
@@ -288,7 +298,6 @@ public class AdminController extends Controller {
         setAttr("topic", byId);
 
         renderFreeMarker("ModifyNew.ftl");
-
     }
 
     public void deleteNew() {
@@ -317,8 +326,6 @@ public class AdminController extends Controller {
     }
 
 
-    public static int selectFlag = -1;
-
     public void searchNewByCategoryId() {
         selectFlag = getParaToInt("select");
         Boolean success = true;
@@ -341,6 +348,7 @@ public class AdminController extends Controller {
     }
 
 
+    //上传新闻封面图片，这个没用，看下面的upload()
     public void DouploadCoverPic() {
         Boolean success = false;
         UploadFile upload = this.getFile();
@@ -352,14 +360,14 @@ public class AdminController extends Controller {
         String webRootPath = PathKit.getWebRootPath();//得到web路径
 
         PropKit.use("myconfig.properties");//从配置文件中读取保存路径
-//            String saveFilePathforimage = PropKit.get("saveFilePathforimage");
+
         String saveFilePathforimage = webRootPath + "\\template\\newImg\\";
         String filename = file.getName();
         String savaFileName = filename;
 
         System.out.println("保存路径=" + saveFilePathforimage);
         String saveNme = saveFilePathforimage + savaFileName;
-
+        //上传的图像存放的位置
         String mysql_save_Path = "/template/newImg/" + savaFileName;
 
         File Direction = new File(saveFilePathforimage);
@@ -387,7 +395,6 @@ public class AdminController extends Controller {
     }
 
     public void addNew() {
-
         List<Category> categories = Category.dao.find("select * from category");
         setAttr("categories", categories);
         renderFreeMarker("addNew.ftl");
@@ -402,7 +409,6 @@ public class AdminController extends Controller {
         File file = upload.getFile();
         String contentType = upload.getContentType();
 
-
         String webRootPath = PathKit.getWebRootPath();//得到web路径
 
         PropKit.use("myconfig.properties");//从配置文件中读取保存路径
@@ -415,7 +421,6 @@ public class AdminController extends Controller {
         String saveNme = saveFilePathforimage + savaFileName;
 
         String mysql_save_Path = "/template/newImg/" + savaFileName;
-
 
         File Direction = new File(saveFilePathforimage);
         //判断文件夹是否存在 如果不存在 就创建文件夹
@@ -440,6 +445,7 @@ public class AdminController extends Controller {
         renderJson(result);
     }
 
+    //被upload()函数调用，用来上传图像的
     public void fileChannelCopy(File s, File t) {
         FileInputStream fi = null;
         FileOutputStream fo = null;
@@ -473,7 +479,6 @@ public class AdminController extends Controller {
 
 
     public void uploadCoverPic() {
-//    setAttr("topicId",tempID);
         renderFreeMarker("uploadCoverPic.ftl");
     }
 
@@ -494,7 +499,6 @@ public class AdminController extends Controller {
          *
          *
          * **/
-
 
         Date date = new Date();
         Admin admin = getSessionAttr("user");

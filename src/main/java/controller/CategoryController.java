@@ -18,11 +18,8 @@ public class CategoryController extends Controller {
         SqlPara sqlPara = Db.getSqlPara("instantNews");
         Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
         Page<Topic> page = Topic.dao.paginate(pageNumber, 10, sqlPara);//分页显示方法
-
         setAttr("page",page);
-
         renderFreeMarker("instantNews.ftl");
-
     }
 
     public void index() {

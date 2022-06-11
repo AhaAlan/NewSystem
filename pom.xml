@@ -2,11 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.nxu.edu.NewSystem</groupId>
+    <groupId>com.ustc.NewSystem</groupId>
     <artifactId>NewSystem</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <!--版本统一控制-->
     <properties>
         <jfinal.version>3.3</jfinal.version>
         <mysql.version>5.1.41</mysql.version>
@@ -18,7 +19,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
+    <!-- profile的主要作用就是区分正式环境和测试环境的配置-->
     <profiles>
+        <!-- dev为开发环境-->
         <profile>
             <id>dev</id>
             <properties>
@@ -30,7 +33,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
-
+        <!-- prod为另一个环境-->
         <profile>
             <id>prod</id>
             <properties>
@@ -69,6 +72,7 @@
             <artifactId>cos</artifactId>
             <version>2017.5</version>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -92,8 +96,6 @@
             <artifactId>jfinal-freemarker-helper</artifactId>
             <version>0.1</version>
         </dependency>
-
-
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -125,6 +127,7 @@
             <version>3.3</version>
         </dependency>
 
+    <!-- 使用Jetty的Maven插件-->
     </dependencies>
     <build>
         <finalName>WebDev</finalName>

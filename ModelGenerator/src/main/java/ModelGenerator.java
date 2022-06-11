@@ -7,9 +7,7 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import javax.sql.DataSource;
 
-
 public class ModelGenerator {
-
     public static DataSource getDataSource() {
         PropKit.use("myconfig.properties");
         MysqlDataSource ds = new MysqlDataSource();
@@ -32,15 +30,15 @@ public class ModelGenerator {
 
         // 创建生成器
         Generator generator = new Generator(getDataSource(), baseModelPackageName, baseModelOutputDir, modelPackageName, modelOutputDir);
-        // 添加不需要生成的表名
 
+        // 添加不需要生成的表名
         generator.setMetaBuilder(new MetaBuilder(getDataSource()) {
             @Override
             protected boolean isSkipTable(String tableName) {
                 return tableName.endsWith("_view");
-
             }
         });
+
         //SQL方言为MYSQL
         generator.setDialect(new MysqlDialect());
         //是否在model中生成dao字段

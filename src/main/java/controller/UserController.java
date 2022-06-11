@@ -16,7 +16,6 @@ import java.util.List;
 
 @Before(CategoryNavbarInterceotor.class)
 public class UserController extends Controller {
-
     public void queryNewResult(){
         String q="%"+search_query+"%";
         String p="%"+year_query+"%";

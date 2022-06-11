@@ -5,9 +5,8 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 
-import javax.naming.ldap.Control;
 //拦截器可以叠加使用
-public class Login  implements Interceptor {
+public class Login implements Interceptor {
     @Override
     public void intercept(Invocation invocation) {
         Controller controller=invocation.getController();
