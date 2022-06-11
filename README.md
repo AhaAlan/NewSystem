@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 新闻管理系统
 
 ## 1、项目介绍
@@ -60,11 +59,8 @@
 
 ## 5、视频演示
 
-[点击播放视频，视频位于文章最后](输入链接)
+待补充
 
 
 
-=======
-# NewSystem
-ustc project 2022/6/10 ：textclassification
->>>>>>> master1/master
+
