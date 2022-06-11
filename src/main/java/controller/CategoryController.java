@@ -10,10 +10,15 @@ import model.Topic;
 
 import java.util.List;
 
+/**
+ * 分类显示模板
+ * 控制每个类别模块的显示的新闻数量等
+ */
+
 @Before(CategoryNavbarInterceotor.class)
 public class CategoryController extends Controller {
 
-    //即时新闻
+    //即时新闻，分页显示，每页显示10条
     public void instantNews(){
         SqlPara sqlPara = Db.getSqlPara("instantNews");
         Integer pageNumber = getParaToInt("page", 1);//从ftl页面传回第几页，为了实现下一页上一页功能
@@ -22,6 +27,7 @@ public class CategoryController extends Controller {
         renderFreeMarker("instantNews.ftl");
     }
 
+    //其他类别，分页显示，每页显示5条新闻
     public void index() {
         Integer categoryId = getParaToInt(0, 1);
 

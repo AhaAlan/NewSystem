@@ -53,7 +53,6 @@
                 success: function (res) {
                     // if(!res.success)
                     alert(res.message);
-
                 }
             });
         }

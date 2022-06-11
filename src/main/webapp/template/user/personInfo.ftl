@@ -159,7 +159,7 @@
 
 
 	<div class="footer ui bottom fixed menu">
-		<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@UTSC Project TextClassification </b></div>
+		<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@UTSC Project TextClassification 2022 </b></div>
 	</div>
 </body>
 </html>

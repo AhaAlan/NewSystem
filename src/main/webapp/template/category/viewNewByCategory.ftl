@@ -12,6 +12,7 @@
 		<tr>
 			<td class="three wide "></td>
 			<td class="ten wide">
+				<#--滚动栏-->
 				<div id="container" style="margin: auto auto">
 					<div id="list" style="left: -1155px">
 						<a href="${base}/topic/${topics.get(4).id!''}">
@@ -55,21 +56,22 @@
 		<tr>
 			<td class="three wide "></td>
 			<td class="ten wide">
-
 				<table class="ui table  padded very basic fluid " rules=none>
-
 					<thead>
-					<tr>
-						<th>标题</th>
-						<th class="center aligned">发布者</th>
-						<th class="center aligned">发布时间</th>
-					</tr>
+						<tr>
+							<th>标题</th>
+							<th class="center aligned">发布者</th>
+							<th class="center aligned">发布时间</th>
+						</tr>
 					</thead>
 					<tbody>
+					<#--显示前几条新闻-->
                     <#list page.getList() as topic>
 						<tr>
-							<td><a style="color: black;font-size: 20px"
-							       href="${base}/topic/${topic.id}"><b>${base}${topic.title}</b></a></td>
+							<td>
+								<a style="color: black;font-size: 20px"
+								   href="${base}/topic/${topic.id}"><b>${base}${topic.title}</b></a>
+							</td>
 							<td class="center aligned">${base}${topic.nickName}</td>
 							<td class="center aligned">${base}${topic.pubDate}</td>
 						</tr>

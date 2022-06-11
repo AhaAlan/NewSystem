@@ -19,8 +19,6 @@
 	</div>
 
 
-
-
 	<script type="text/javascript">
 
         function upload() {

@@ -14,7 +14,6 @@
 	<title><@block name="title"></@block></title>
 
 	<style type="text/css">
-
 		ul,
 		ol,
 		li,
@@ -92,7 +91,6 @@
 			right: 0;
 			background-image: url('${base}/template//images/next.png');
 		}
-
 	</style>
 
 </head>
@@ -126,11 +124,11 @@
 					<div class="filed ">
 						<select class="ui dropdown " name="year" style="width: 100px;height: 60px" >
 							<option selected="" value=""> &nbsp;&nbsp;&nbsp;&nbsp;年度</option>
+							<option value="2022"> &nbsp;&nbsp;&nbsp;&nbsp;2022</option>
+							<option value="2021"> &nbsp;&nbsp;&nbsp;&nbsp;2021</option>
 							<option value="2020"> &nbsp;&nbsp;&nbsp;&nbsp;2020</option>
 							<option value="2019"> &nbsp;&nbsp;&nbsp;&nbsp;2019</option>
 							<option value="2018"> &nbsp;&nbsp;&nbsp;&nbsp;2018</option>
-							<option value="2017"> &nbsp;&nbsp;&nbsp;&nbsp;2017</option>
-							<option value="2016"> &nbsp;&nbsp;&nbsp;&nbsp;2016</option>
 						</select>
 					</div>
 					<button class="ui primary submit button"  onclick="query()" >搜索</button><br>
@@ -142,6 +140,7 @@
 	</div>
 </div>
 
+<#--首页索引栏-->
 <div class="ui attached stackable menu inverted nav fluid">
 	<div class="ui container">
 		<a class="item" href="${base}/">
@@ -175,10 +174,12 @@
 		</div>
 	</div>
 </div>
+
+<#--页脚-->
 <@block name="content">
 </@block>
 <div class="footer ui bottom fixed menu">
-	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ UTSC Project TextClassification </b></div>
+	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ UTSC Project TextClassification 2022 </b></div>
 </div>
 </body>
 
@@ -218,8 +219,6 @@
             }
         });
     }
-
 </script>
-
 
 </html>

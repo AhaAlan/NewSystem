@@ -13,6 +13,7 @@
 					</tr>
 					</thead>
 
+					<#--首页展示的几个热点新闻，共八条-->
 					<tbody>
 					<tr>
 						<td><a href="${base}/topic/${topies.get(4).id}">${topies.get(4).title}</a></td>
@@ -42,6 +43,7 @@
 				</table>
 			</td>
 
+			<#--滚动栏里的新闻，含有图片，共四条-->
 			<td class="eight wide">
 				<div class="wrapper" style="width:799px ;height: 400px">
 					<div class="box">
