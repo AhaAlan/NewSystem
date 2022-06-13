@@ -93,6 +93,7 @@
 		}
 	</style>
 
+
 </head>
 
 <script>
@@ -106,14 +107,12 @@
 <body>
 
 
+<#--semantic-ui,类似于 bootstrap 的 ui framework,语义化组织-->
 <div class="ui fluid container middle aligned " style="height: 200px;">
 	<div class="ui grid ">
-
-
 		<div class="eight wide column center aligned centered middle aligned "    style="margin: auto auto;background-color:white"  >
-
 			<div class="ui center two wide " style="margin: 0px 0px;background-color:white">
-				<img src="${base}/template/image/logo.png" alt="" style="width: 400px;height: 80px">
+				<img src="${base}/template/image/logo2.png" alt="" style="width: 400px;height: 80px">
 			</div>
 
 			<form class="ui fluid form" id="quert1">
@@ -178,9 +177,13 @@
 <#--页脚-->
 <@block name="content">
 </@block>
-<div class="footer ui bottom fixed menu">
-	<div class="ui text center aligned container footer ui bottom fixed"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@ UTSC Project TextClassification 2022 </b></div>
+<div  class="footer ui bottom fixed menu">
+	<div class="ui text center aligned container footer ui bottom fixed">
+		<b>Copyright @ USTC Project TextClassification 2022</b>
+	</div>
 </div>
+
+
 </body>
 
 <script>
