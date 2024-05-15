@@ -44,7 +44,6 @@ public class MainConfig extends JFinalConfig {
         routes.add("/user", UserController.class,"user");
         routes.add("/admin", AdminController.class,"admin");
         routes.add("/topic", TopicController.class,"topic");
-
     }
 
     //模板引擎模块

@@ -286,7 +286,6 @@ public class AdminController extends Controller {
         String message = success ? "成功" : "失败";
         Kv result = Kv.by("success", success).set("message", message);
         renderJson(result);
-
     }
 
     public void ModifyNew() {
